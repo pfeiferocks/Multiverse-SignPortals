@@ -5,7 +5,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-version = System.getenv('GITHUB_VERSION') ?: 'local'
+version = System.getenv('GITHUB_VERSION') ?: '4.2.2-c'
 group = 'com.onarandombox.multiversesignportals'
 description = 'Multiverse-SignPortals'
 
@@ -83,7 +83,7 @@ publishing {
 
 
 processResources {
-    def props = [version: "${project.version}"]
+    def props = [version: "4.2.2-c"]
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {

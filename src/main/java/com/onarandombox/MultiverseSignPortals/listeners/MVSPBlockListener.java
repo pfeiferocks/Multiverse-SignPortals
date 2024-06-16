@@ -151,7 +151,7 @@ public class MVSPBlockListener implements Listener {
             Sign s = (Sign) state;
             PortalDetector pd = this.plugin.getPortalDetector();
             if (pd.getSignStatus(s) == SignStatus.NetherPortalSign || pd.getSignStatus(s) == SignStatus.SignPortal) {
-                if (!this.permissions.hasPermission(event.getPlayer(), CREATE_PERM, true)) {
+                if (!this.permissions.hasPermission(event.getPlayer(),"multiverse.signportal.create." + s.getLine(2), true)) {
                     event.setCancelled(true);
                     event.getPlayer().sendMessage("You don't have permission to destroy a SignPortal!");
                     event.getPlayer().sendMessage(ChatColor.GREEN + CREATE_PERM);
@@ -170,7 +170,7 @@ public class MVSPBlockListener implements Listener {
     }
 
     private void createMultiverseSignPortal(SignChangeEvent event) {
-        if (this.plugin.getCore().getMVPerms().hasPermission(event.getPlayer(), "multiverse.signportal.create", true)) {
+        if (this.plugin.getCore().getMVPerms().hasPermission(event.getPlayer(), "multiverse.signportal.create." + event.getLines()[2], true)) {
             Logging.finer("MV SignPortal Created");
             event.setLine(1, ChatColor.DARK_GREEN + event.getLine(1));
             checkRedstoneTeleportTargets(event);
